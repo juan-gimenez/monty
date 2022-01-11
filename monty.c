@@ -1,28 +1,33 @@
 #include "monty.h"
 
+glob_t glob;
+
 /**
- * check_file - check if file can be opened
- * @argc: arg count
- * @argv: arg vector
- * Return: file
- */
-FILE *check_input(int argc, char *argv[])
+ * stack_init - initialize 
+ * @head: top of the stack
+ **/
+void stack_initialize(stack_t **head)
 {
-  FILE *file;
+  *head = NULL;
+  glob.top = head; /** set the top of the stack to head = NULL **/
+}
 
-  if (argc == 1 || argc > 2) /** user gives no file or more than one argument*/
+/**
+ * main - monty interpreter
+ * @argc: number of command line arguments
+ * @argv: array of strings (arguments)
+ * Return: 
+ **/
+int main(int argc, char **argv)
+{
+  stack_t *head;
+
+  stack_initialize(&head);
+  if (argc = 1 || argc > 2) /** If the user does not give any file or more than one argument to our program */
     {
-      dprintf(2, "USAGE: monty file\n");
+      printf("USAGE: monty file\n");
       exit(EXIT_FAILURE);
     }
-
-  file = fopen(argv[1);
-
-    if (file == NULL) /** not file exist */
-    {
-      dprintf(2, "Error: Can't open file %s\n", argv[1]);
-      exit(EXIT_FAILURE);
-    }
-
-  return (file);
+  process_file(argv[1], &head);
+  exit(EXIT_SUCCESS);
 }
