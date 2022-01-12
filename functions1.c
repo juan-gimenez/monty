@@ -1,6 +1,5 @@
 #include "monty.h"
 
-globo_t glob;
 
 /**
  * push - push data
