@@ -28,6 +28,5 @@ int main(int argc, char **argv)
       printf("USAGE: monty file\n");
       exit(EXIT_FAILURE);
     }
-  process_file(argv[1], &head);
-  exit(EXIT_SUCCESS);
+ 
 }
