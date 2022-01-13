@@ -8,12 +8,13 @@
  **/
 int main(int argc, char **argv)
 {
-  int open, read, getresult;
+  int getresult;
   char *buffer = NULL;
   size_t size = 0;
   unsigned int numbofline = 1;
   char **array = NULL;
   stack_t **s = NULL;
+  FILE *openf = NULL;
   
   s = malloc(sizeof(stack_t));
   if (s == NULL)
@@ -23,25 +24,25 @@ int main(int argc, char **argv)
     } 
   if (argc != 2) /** Checks if one or more arg*/
     {
-      printf(stderr, "USAGE: monty file\n");
+      printf("USAGE: monty file\n");
       exit(EXIT_FAILURE);
     }
-  open = fopen(argv[1], O_RDONLY);
-  if (open < 0)
+  openf = fopen(argv[1], "r");
+  if (!openf)
     {
-      fprintf(stderr, "Error: Can't open file <file>\n");
+      printf(stderr, "Can't open file <%s>\n", argv[1]);
       return (EXIT_FAILURE); /** open fails */
     }
   
-  getresult = getline(&buffer, &size, open)
-	while (getresult != -1) /** getline succees */
-	  {
-	   array = tokenize(buffer, " \n\t");
-	   opcodesfinder(array, stack, numbofline);
-	   numberofline++;
-	  }
-  freearray(array);
-  free(stack);
-  fclose(open);
+  getresult = getline(&buffer, &size, openf);
+  while (getresult != -1) /** getline succees */
+    {
+      array = tokenize(buffer, " \n\t");
+      opcodesfinder(array, s, numbofline);
+      numbofline++;
+    }
+  free(s);
+  free_arr(array);
+  fclose(openf);
   return (1); /** success **/
 }

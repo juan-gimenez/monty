@@ -1,8 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #include <stdlib.h>
 #include <glob.h>
 #include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 #define  _GNU_SOURCE
 
 /**
@@ -34,5 +38,13 @@ typedef struct instruction_s
   char *opcode;
   void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+char **tokenizer(char *buffer, char *separator);
+void (char **arr, stack_t **stack, unsigned int line_number);
+void _pall(stack_t **head, unsigned int numb);
+void _push(stack_t **stack, unsigned int line_number, int push_value);
+
+void free_arr(char **arr);
+void free_s(stack_t **head);
 
 #endif
