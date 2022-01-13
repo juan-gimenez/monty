@@ -8,18 +8,6 @@
  **/
 int main(int argc, char **argv)
 {
-<<<<<<< HEAD
-	stack_t *head;
-
-	(void)argv;
-	stack_initialize(&head);
-	if (argc != 2) /** Checks if one or more arg*/
-	{
-		printf("USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	exit(EXIT_SUCCESS);
-=======
   int open, read, getresult;
   char *buffer = NULL;
   size_t size = 0;
@@ -36,7 +24,7 @@ int main(int argc, char **argv)
   if (argc != 2) /** Checks if one or more arg*/
     {
       printf(stderr, "USAGE: monty file\n");
-      return(EXIT_FAILURE);
+      exit(EXIT_FAILURE);
     }
   open = fopen(argv[1], O_RDONLY);
   if (open < 0)
@@ -56,5 +44,4 @@ int main(int argc, char **argv)
   free(stack);
   fclose(open);
   return (1); /** success **/
->>>>>>> e66cdcfdfdbdb0b39b23e382abef81429e243abf
 }
