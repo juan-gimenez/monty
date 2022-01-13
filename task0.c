@@ -30,3 +30,20 @@ void _push(stack_t **stack, unsigned int line_number, int push_value)
 	}
 	*stack = new_node;
 }
+/**
+ * _pall -Print all elem from top
+ * @stack: Point to head
+ * @line_number: line of .m
+ * Return: Num of nodes
+ */
+void _pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+	(void)line_number;
+
+	while (tmp)
+	{
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
+	}
+}
