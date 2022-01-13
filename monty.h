@@ -40,9 +40,10 @@ typedef struct instruction_s
 } instruction_t;
 
 char **tokenizer(char *buffer, char *separator);
-void (char **arr, stack_t **stack, unsigned int line_number);
-void _pall(stack_t **head, unsigned int numb);
-void _push(stack_t **stack, unsigned int line_number, int push_value);
+int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number);
+void pall(stack_t **head, unsigned int numb);
+void push(stack_t **stack, unsigned int line_number, int push_value);
+void nop(stack_t **stack, unsigned int line_number);
 
 void free_arr(char **arr);
 void free_s(stack_t **head);
