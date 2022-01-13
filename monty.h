@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <glob.h>
 #include <stdio.h>
+#define  _GNU_SOURCE
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
