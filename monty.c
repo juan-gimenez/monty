@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 {
 	stack_t *head;
 
+	(void)argv;
 	stack_initialize(&head);
 	if (argc != 2) /** Checks if one or more arg*/
 	{
