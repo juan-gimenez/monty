@@ -8,11 +8,15 @@
  */
 int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 {
-	int i = 0;
+	int i = 1;
 
 	instruction_t opcodelist[] = {
 		{"pall", pall},
 		{"push", push},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
 		{"nop", nop},
 	};
 

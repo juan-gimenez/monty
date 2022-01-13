@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _XOPEN_SOURCE 700
 #include <stdlib.h>
 #include <glob.h>
 #include <stdio.h>
@@ -41,8 +42,13 @@ typedef struct instruction_s
 
 char **tokenizer(char *buffer, char *separator);
 int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number);
+size_t linklen(stack_t **stack);
 void pall(stack_t **head, unsigned int numb);
 void push(stack_t **stack, unsigned int line_number, int push_value);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 
 void free_arr(char **arr);
