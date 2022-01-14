@@ -3,7 +3,7 @@
  * push -Add new node at top of stack_t
  * @stack: point to stack
  * @line_number: l.n of .m
- * @push_value: value to push
+ * @push_value: int
  */
 void push(stack_t **stack, unsigned int line_number, int push_value)
 {

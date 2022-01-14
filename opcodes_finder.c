@@ -8,7 +8,7 @@
  */
 int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 {
-	int i = 1;
+	int i = 0;
 
 	instruction_t opcodelist[] = {
 		{"pall", pall},
@@ -18,6 +18,7 @@ int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{NULL, NULL}
 	};
 
 	int size = sizeof(opcodelist) / sizeof(instruction_t);
@@ -31,6 +32,6 @@ int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\12", line_number, opcode);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
