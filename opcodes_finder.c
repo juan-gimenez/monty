@@ -19,6 +19,7 @@ int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{"#", comment},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 

@@ -21,3 +21,24 @@ unsigned int comment(char *line_number)
     }
   return (0);
 }
+
+/**
+ * sub - sub
+ * @head: ptr to ptr to head
+ * @line_number:  line count
+ * Return: no return
+ */
+void sub(stack_t **head, unsigned int line_number)
+{
+
+  if (!*head || !(*head)->next)
+    {
+      fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+      exit(EXIT_FAILURE);
+    }
+  else
+    {
+      (*head)->next->n -= (*head)->n;
+      pop(head, line_number);
+    }
+}
