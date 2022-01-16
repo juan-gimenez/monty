@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
   * main - entry point of the program
-  * @argc: argument counter
+  * @argc: argument counterr
   * @argv: argument vector
   * Return: always 0
   */
