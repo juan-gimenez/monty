@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * ch_num - checks validity of number arg in opcode
+ * ch_num - checks validity of number assrg in opcode
  * @numstr: number arg of opcode as string
  * @stack: head of stack (double linked list)
  * @line: line number in file
