@@ -1,47 +1,50 @@
 #include "monty.h"
-
 /**
- * main - monty
- * @argc: number of command line arguments
- * @argv: array of strings (arguments)
- * Return: 0
- **/
-int main(int argc, char **argv)
+  * main - entry point of the program
+  * @argc: argument counter
+  * @argv: argument vector
+  * Return: always 0
+  */
+int main(int argc, char *argv[])
 {
-	int getresult = 0;
-	char *buffer = NULL;
-	size_t size = 0;
-	unsigned int numbofline = 0;
-	char *array = NULL;
-	stack_t **s = NULL;
-	FILE *openf = NULL;
+	int line;
+	size_t len = 1024;
+	char *command, *buf = NULL;
+	FILE *fd;
+	stack_t *stack = NULL;
 
-	s = malloc(sizeof(stack_t));
-	if (s == NULL)
+	if (argc != 2)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	if (argc != 2) /** Checks if one or more arg*/
+	fd = fopen(argv[1], "r");
+	if (!fd)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	openf = fopen(argv[1], "r");
-	if (!openf)
+	for (line = 1; getline(&buf, &len, fd) != -1; line++)
 	{
-		fprintf(stderr, "Can't open file <%s>\n", argv[1]);
-		return (EXIT_FAILURE); /** open fails */
-	}
+		buf[strlen(buf) - 1] = 0;
+		command = strtok(buf, " \t");
+		if (!command)
+		{
+			free(buf);
+			buf = NULL;
+			continue;
+		}
+		if (command[0] == '#')
+		{
+			free(buf);
+			buf = NULL;
+			continue;
+		}
+		opcfinder(command, line, &stack);
+		free(buf);
+		buf = NULL;
 
-	getresult = getline(&buffer, &size, openf);
-	while (getresult != -1) /** getline succees */
-	{
-		array = strtok(buffer, " \n\t");
-		opcfinder(array, s, numbofline);
-		numbofline++;
 	}
-	free(s);
-	fclose(openf);
-	return (1); /** success **/
+	free(buf), buf = NULL, fclose(fd), free_stack(stack);
+	return (0);
 }
