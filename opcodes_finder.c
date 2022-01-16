@@ -18,6 +18,10 @@ int opcfinder(const char *opcode, stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+<<<<<<< HEAD
+=======
+		{"sub", sub},
+>>>>>>> 37859dc3e8a26f7f11af62f9b2539419ab965edd
 		{NULL, NULL}
 	};
 
