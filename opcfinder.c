@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
-* opcfinder - checks function in a certain line
+* opcfinder - checks function in a certain liner
 * @command: monty opcode
 * @line: line num of file
 * @stack: pointer to double linked list
